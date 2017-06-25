@@ -7,7 +7,7 @@ $(document).ready(function() {
         type: 'DELETE',
         url: id,
         success: function(response) {
-          alert('Deleting Article');
+          alert('Deleting Link');
           window.location.href='/';
         },
         error: function (err) {

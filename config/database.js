@@ -1,4 +1,4 @@
 module.exports = {
-  database: 'mongodb://localhost:27017/nodekb',
+  database: 'mongodb://egodon:kiwi123@ds135592.mlab.com:35592/linklib',
   secret: 'yoursecret'
 }

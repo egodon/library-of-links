@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-// Article Model
-let Article = require('../models/article');
+// Link Model
+let Article = require('../models/link');
 
 // User Model
 let User = require('../models/user');
@@ -10,7 +10,7 @@ let User = require('../models/user');
 
 // Add Route
 router.get('/add', ensureAnthenticated, (req, res) => {
-  res.render('add_article', {
+  res.render('add_link', {
     title: 'Add Link'
   });
 });
@@ -30,7 +30,7 @@ router.post('/edit/:id', ensureAnthenticated, function(req, res) {
           console.log(err);
           return;
         } else {
-          req.flash('success', 'Article Updated')
+          req.flash('success', 'Link Updated')
           res.redirect('/');
         }
     });
@@ -41,7 +41,7 @@ router.post('/edit/:id', ensureAnthenticated, function(req, res) {
 router.post('/add', function(req, res) {
   req.checkBody('title', 'Title is required').notEmpty();
   //req.checkBody('author', 'Author is required').notEmpty();
-  req.checkBody('body', 'Body is required').notEmpty();
+  req.checkBody('url', 'URL is required').notEmpty();
 
   // Get errors
   let errors = req.validationErrors();
@@ -54,8 +54,8 @@ router.post('/add', function(req, res) {
   }else {
     let article = new Article();
     article.title = req.body.title;
-    article.author = req.user._id;
-    article.body = req.body.body;
+    article.submitter = req.user._id;
+    article.url = req.body.url;
 
     article.save((err) => {
         if (err) {
@@ -70,20 +70,20 @@ router.post('/add', function(req, res) {
 
 });
 
-// Get Single Article
+// Get Single Link
 router.get('/:id', function(req, res) {
   Article.findById(req.params.id, function(err, article) {
-      User.findById(article.author, function (err, user) {
-          res.render('article', {
-            article:article,
-            author: user.name
+      User.findById(article.submitter, function (err, user) {
+          res.render('link', {
+            article: article,
+            submitter: user.name
           });
       })
 
   });
 });
 
-// Delete Article
+// Delete Link
 router.delete('/:id', function(req, res) {
   if (!req.user._id){
     res.status(401).send();
@@ -111,7 +111,7 @@ router.get('/edit/:id', function(req, res) {
         req.flash('danger', 'Not Authorized');
         res.redirect('/');
       }
-      res.render('edit_article', {
+      res.render('edit_link', {
         title: 'Edit Link',
         article:article
       });

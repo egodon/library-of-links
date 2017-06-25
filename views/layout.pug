@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Library of Links
+    title CodeSquad Link Library
     link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet' href='/css/styles.css')
   body
@@ -13,17 +13,17 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='#') Library of Links
+          a.navbar-brand(href='/') CodeSquad_Link_Library
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li
-              a(href='/') Home
             if user
               li
                 a(href='/articles/add') Add Link
         
           ul.nav.navbar-nav.navbar-right
             if user
+              li You are logged in as #{user.name}
+              
               li 
                 a(href='/users/logout') Logout
             else
