@@ -29,6 +29,7 @@ const app = express();
 //Bring in Models
 let Link = require('./models/link');
 
+app.set('port', (process.env.PORT || 5000));
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -110,6 +111,6 @@ app.use('/articles', links);
 app.use('/users', users);
 
 // Start Server
-app.listen(3000, () => {
-  console.log('Server started on port 3000...');
-})
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+});
