@@ -89,22 +89,24 @@ app.get('*', function(req, res, next) {
 
 // Home Route
 app.get('/', (req, res) => {
-  Link.find({}, function(err, articles){
+  Link.find({}, function(err, links){
     if (err){
       console.log(err);
     } else {
       res.render('index', {
         title: 'Links',
-        articles: articles
+        links: links
+
       });
+
     }
   });
 });
 
 //Route Files
-let articles = require('./routes/links');
+let links = require('./routes/links');
 let users = require('./routes/users');
-app.use('/articles', articles);
+app.use('/articles', links);
 app.use('/users', users);
 
 // Start Server

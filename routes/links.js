@@ -20,7 +20,7 @@ router.get('/add', ensureAnthenticated, (req, res) => {
 router.post('/edit/:id', ensureAnthenticated, function(req, res) {
     let article = {};
     article.title = req.body.title;
-    article.author = req.body.author;
+    article.submitter = req.body.submitter;
     article.body = req.body.body;
 
     let query = {_id:req.params.id}
@@ -54,7 +54,7 @@ router.post('/add', function(req, res) {
   }else {
     let article = new Article();
     article.title = req.body.title;
-    article.submitter = req.user._id;
+    article.submitter = req.user.name;
     article.url = req.body.url;
 
     article.save((err) => {
@@ -75,7 +75,7 @@ router.get('/:id', function(req, res) {
   Article.findById(req.params.id, function(err, article) {
       User.findById(article.submitter, function (err, user) {
           res.render('link', {
-            article: article,
+            link: article,
             submitter: user.name
           });
       })
@@ -91,7 +91,7 @@ router.delete('/:id', function(req, res) {
   let query = {_id: req.params.id}
 
   Article.findById(req.params.id, function(err, article){
-    if (article.author != req.user._id){
+    if (article.submitter != req.user._id){
       res.status(401).send();
     }else {
       Article.remove(query, function(err) {
@@ -106,14 +106,14 @@ router.delete('/:id', function(req, res) {
 
 // Load Edit Form
 router.get('/edit/:id', function(req, res) {
-  Article.findById(req.params.id, function(err, article) {
-      if(article.author != req.user._id){
+  Article.findById(req.params.id, function(err, links) {
+      if(links.submitter != req.user._id){
         req.flash('danger', 'Not Authorized');
         res.redirect('/');
       }
       res.render('edit_link', {
         title: 'Edit Link',
-        article:article
+        link:links
       });
   });
 });
