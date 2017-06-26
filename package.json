@@ -19,6 +19,6 @@
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-rc.1",
-    "validator": "^7.0.0"
+    "express-validator": "^7.0.0"
   }
 }
