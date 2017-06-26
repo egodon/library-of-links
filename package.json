@@ -1,12 +1,12 @@
 {
-  "name": "nodekb",
+  "name": "linklib",
   "version": "1.0.0",
-  "description": "Simple knowledge base app",
+  "description": "A CRUD app to share Urls",
   "main": "app.js",
   "scripts": {
     "start": "node app"
   },
-  "submitter": "Evan Godon",
+  "author": "Evan Godon",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
