@@ -1,0 +1,16 @@
+
+.categories-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+
+}
+
+.categories > li{
+    list-style: none;
+    color: #111;
+    display: inline;
+    margin-left: 1rem;
+    padding: 0 1rem;
+    border-left: 2px solid black;
+}

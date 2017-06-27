@@ -1,0 +1,19 @@
+
+-Reduce number of requests on load
+(Bootstrap.css, Bootstrap.js, jquery, main.js, styles.css)
+Webpack...
+
+-Add submission date to panels
+moment.js
+
+-Add SASS
+
+
+
+
+
+FEATURES
+
+-Search/filter
+-custom categories
+-check domain name on submission and add category

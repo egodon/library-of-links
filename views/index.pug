@@ -2,6 +2,13 @@ extends layout
 
 block content
   h1.section-title #{title}
+  div.categories-container
+    ul.categories
+      li Categories:
+      li Video
+      li StackOverflow
+      li Tutorial
+      li Blog Post
   ul.list-group
     each link, i in links
       div.panel.panel-default
@@ -12,5 +19,5 @@ block content
             if user && user.name == link.submitter
               a(href="#") Edit/Delete
         div.panel-body
-          a.panel-link-url(href="http://"+link.url)= link.url
+          a.panel-link-url(href="https://"+link.url)= link.url
 
