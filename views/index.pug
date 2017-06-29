@@ -10,7 +10,7 @@ block content
       li.categories-article Article
       li.categories-stackoverflow StackOverflow
       li.categories-github GitHub
-      li.categories-miscellaneous Miscellaneous
+      li.categories-other Other
   ul.list-group
     each link, i in links
       - var panelCategory = ''
@@ -24,8 +24,8 @@ block content
           -panelCategory = 'panel-category-stackoverflow'
         else if link.category == 'GitHub'
           -panelCategory = 'panel-category-github'
-        else if link.category == 'Miscellaneous'
-          -panelCategory = 'panel-category-miscellaneous'
+        else if link.category == 'Other'
+          -panelCategory = 'panel-category-other'
       div.panel.panel-default(class=panelCategory)
         div.panel-heading
           h3.panel-title= link.title

@@ -44,6 +44,6 @@
     border-left: 5px solid var(--github-color);
 }
 
-.panel-category-miscellaneous{
-    border-left: 5px solid var(--miscellaneous-color);
+.panel-category-other{
+    border-left: 5px solid var(--other-color);
 }

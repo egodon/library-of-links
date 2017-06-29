@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+
 }
 
 .categories > li{
@@ -41,6 +42,6 @@
     border-left: 14px solid var(--github-color);
 }
 
-.categories-miscellaneous{
-    border-left: 14px solid var(--miscellaneous-color);
+.categories-other{
+    border-left: 14px solid var(--other-color);
 }
