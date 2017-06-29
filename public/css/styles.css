@@ -1,4 +1,5 @@
 @import 'base/_global.css';
-@import 'modules/_titles.css';
+@import 'base/_variables.css';
+@import 'modules/_headers.css';
 @import 'modules/_panel.css';
 @import 'modules/_categories.css';

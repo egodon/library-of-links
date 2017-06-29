@@ -1,0 +1,10 @@
+
+/*Category colours*/
+:root {
+    --video-color: #F44336;
+    --tutorial-color: #03A9F4;
+    --article-color: #4CAF50;
+    --stackoverflow-color: #FF5722;
+    --github-color: #E91E63;
+    --miscellaneous-color: #9C27B0;
+}

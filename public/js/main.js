@@ -5,7 +5,9 @@ $(document).ready(function() {
 
       $.ajax({
         type: 'DELETE',
-        url: id,
+        url: "https://api.mlab.com/api/1/databases/linklib/collections/links/" + id +"?apiKey=L9_WEqfVS1SaIdZ5mfToatlnrUtbM2pV",
+        timeout: 300000,
+        async: true,
         success: function(response) {
           alert('Deleting Link');
           window.location.href='/';

@@ -6,7 +6,7 @@ Webpack...
 -Add submission date to panels
 moment.js
 
--Add SASS
+-Render index with newest links first
 
 
 

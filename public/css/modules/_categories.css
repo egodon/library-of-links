@@ -3,14 +3,44 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-
 }
 
 .categories > li{
     list-style: none;
     color: #111;
     display: inline;
-    margin-left: 1rem;
-    padding: 0 1rem;
-    border-left: 2px solid black;
+    margin: 0 1rem;
+    padding: 0 0.5rem;
+
+}
+
+.categories > li:first-child{
+    border: none;
+    margin: 0;
+}
+
+
+.categories-video {
+    border-left: 14px solid var(--video-color);
+}
+
+
+.categories-tutorial{
+    border-left: 14px solid var(--tutorial-color);
+}
+
+.categories-article{
+    border-left: 14px solid var(--article-color);
+}
+
+.categories-stackoverflow{
+    border-left: 14px solid var(--stackoverflow-color);
+}
+
+.categories-github{
+    border-left: 14px solid var(--github-color);
+}
+
+.categories-miscellaneous{
+    border-left: 14px solid var(--miscellaneous-color);
 }

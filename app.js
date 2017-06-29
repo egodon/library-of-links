@@ -11,13 +11,14 @@ const config = require('./config/database');
 mongoose.connect(config.database);
 let db  = mongoose.connection;
 
-// ES6 Promises
+// ES6 Promises because mongoose promises are deprecated
 mongoose.Promise = global.Promise;
 
 //Check connection
 db.once('open', function() {
   console.log('Connected to MongoDB');
 });
+
 //Check for DB errors
 db.on('error', function(err) {
   console.log(err);
@@ -29,8 +30,9 @@ const app = express();
 //Bring in Models
 let Link = require('./models/link');
 
-// Set Port number
-app.set('port', (process.env.PORT || 3000));
+// Set Port
+app.set('port', (process.env.PORT || 5000));
+
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -98,9 +100,7 @@ app.get('/', (req, res) => {
       res.render('index', {
         title: 'Links',
         links: links
-
       });
-
     }
   });
 });

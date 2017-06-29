@@ -10,9 +10,16 @@ let linksSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  submissionDate:{
+    type: String,
+      required: true
+  },
   url: {
     type: String,
     required: true
+  },
+  category: {
+    type: String
   }
 });
 

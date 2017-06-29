@@ -11,5 +11,15 @@ block content
     #form-group
       label URL:
       input.form-control(name='url', type='text')
+
+    #form-group
+      label Category:
+      select.form-control(name='category')
+        <option>Video</option>
+        <option>Tutorial</option>
+        <option>Article</option>
+        <option>StackOverflow</option>
+        <option>GitHub</option>
+        <option>Miscellaneous</option>
     br
     input.btn.btn-primary(type='submit', value='Submit')

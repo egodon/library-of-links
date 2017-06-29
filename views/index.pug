@@ -5,19 +5,35 @@ block content
   div.categories-container
     ul.categories
       li Categories:
-      li Video
-      li StackOverflow
-      li Tutorial
-      li Blog Post
+      li.categories-video Video
+      li.categories-tutorial Tutorial
+      li.categories-article Article
+      li.categories-stackoverflow StackOverflow
+      li.categories-github GitHub
+      li.categories-miscellaneous Miscellaneous
   ul.list-group
     each link, i in links
-      div.panel.panel-default
+      - var panelCategory = ''
+        if link.category == 'Video'
+          -panelCategory = 'panel-category-video'
+        else if link.category == 'Tutorial'
+          -panelCategory = 'panel-category-tutorial'
+        else if link.category == 'Article'
+          -panelCategory = 'panel-category-article'
+        else if link.category == 'StackOverflow'
+          -panelCategory = 'panel-category-stackoverflow'
+        else if link.category == 'GitHub'
+          -panelCategory = 'panel-category-github'
+        else if link.category == 'Miscellaneous'
+          -panelCategory = 'panel-category-miscellaneous'
+      div.panel.panel-default(class=panelCategory)
         div.panel-heading
           h3.panel-title= link.title
           div.panel-under-title
-            p Submitted by #{link.submitter}
+            p Submitted by #{link.submitter} on #{link.submissionDate}
             if user && user.name == link.submitter
-              a(href="#") Edit/Delete
+              a.delete-article(href="#" data-id=link._id) Delete
         div.panel-body
-          a.panel-link-url(href="https://"+link.url)= link.url
+          a.panel-link-url(href=link.url target='_blank')= link.url
+
 

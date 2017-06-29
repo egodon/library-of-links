@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 
 // Link Model
-let Article = require('../models/link');
+let Link = require('../models/link');
 
 // User Model
 let User = require('../models/user');
@@ -18,14 +19,14 @@ router.get('/add', ensureAnthenticated, (req, res) => {
 
 // Update Submit POST Route
 router.post('/edit/:id', ensureAnthenticated, function(req, res) {
-    let article = {};
-    article.title = req.body.title;
-    article.submitter = req.body.submitter;
-    article.body = req.body.body;
+    let link = {};
+    link.title = req.body.title;
+    link.submitter = req.body.submitter;
+    link.body = req.body.body;
 
     let query = {_id:req.params.id}
 
-    Article.update(query, article, (err) => {
+    Link.update(query, link, (err) => {
         if (err) {
           console.log(err);
           return;
@@ -40,7 +41,7 @@ router.post('/edit/:id', ensureAnthenticated, function(req, res) {
 // Add Submit POST Route
 router.post('/add', function(req, res) {
   req.checkBody('title', 'Title is required').notEmpty();
-  //req.checkBody('author', 'Author is required').notEmpty();
+
   req.checkBody('url', 'URL is required').notEmpty();
 
   // Get errors
@@ -52,12 +53,14 @@ router.post('/add', function(req, res) {
     errors: errors
     })
   }else {
-    let article = new Article();
-    article.title = req.body.title;
-    article.submitter = req.user.name;
-    article.url = req.body.url;
+    let link = new Link();
+    link.title = req.body.title;
+    link.submitter = req.user.name;
+    link.url = req.body.url;
+    link.submissionDate = moment().format("MMMM Do, YYYY");
+    link.category = req.body.category;
 
-    article.save((err) => {
+    link.save((err) => {
         if (err) {
           console.log(err);
           return;
@@ -72,7 +75,7 @@ router.post('/add', function(req, res) {
 
 // Get Single Link
 router.get('/:id', function(req, res) {
-  Article.findById(req.params.id, function(err, article) {
+  Link.findById(req.params.id, function(err, article) {
       User.findById(article.submitter, function (err, user) {
           res.render('link', {
             link: article,
@@ -90,11 +93,11 @@ router.delete('/:id', function(req, res) {
   }
   let query = {_id: req.params.id}
 
-  Article.findById(req.params.id, function(err, article){
+  Link.findById(req.params.id, function(err, article){
     if (article.submitter != req.user._id){
       res.status(401).send();
     }else {
-      Article.remove(query, function(err) {
+      Link.remove(query, function(err) {
         if (err){
           console.log(err);
         }
@@ -106,7 +109,7 @@ router.delete('/:id', function(req, res) {
 
 // Load Edit Form
 router.get('/edit/:id', function(req, res) {
-  Article.findById(req.params.id, function(err, links) {
+  Link.findById(req.params.id, function(err, links) {
       if(links.submitter != req.user._id){
         req.flash('danger', 'Not Authorized');
         res.redirect('/');
