@@ -98,8 +98,8 @@ app.get('/', (req, res) => {
       console.log(err);
     } else {
       res.render('index', {
-        title: 'Links',
-        links: links
+        title: 'LINK LIBRARY',
+        links: links.reverse()
       });
     }
   });

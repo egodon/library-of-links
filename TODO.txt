@@ -1,15 +1,19 @@
+1.Configure gulp to with webpack properly
+2.Fade in panels
+
 
 -Reduce number of requests on load
 (Bootstrap.css, Bootstrap.js, jquery, main.js, styles.css)
 Webpack...
 
+-Add feature to filter each category
 
--Render index with newest links first
-
--Fix Delete requests with Andrew
-
+-Add delete link message notification
 
 
+BUGS:
+-db.prototype.authenticate will not longer be available
+-UnhandledPromiseRejectionWarning
 
 
 FEATURES

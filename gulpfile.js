@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const nodemon = require('gulp-nodemon');
+const webpack = require('webpack-stream');
 const watch = require('gulp-watch');
 
 
@@ -16,8 +17,17 @@ gulp.task('browser-sync', ['nodemon'], function() {
         port: 7000,
     });
 
-    watch('./public/css/**/*.css', function(){
+    watch('./public/css/**/*.css', () => {
         gulp.start('cssInject');
+    });
+
+    watch('./views/**/*.pug', () => {
+        browserSync.reload();
+    });
+
+    watch('./public/js/**/*.js', () =>{
+        gulp.start('scriptsRefresh');
+
     });
 });
 
@@ -39,5 +49,15 @@ gulp.task('nodemon', function (cb) {
 gulp.task('cssInject', function(){
     return gulp.src('./public/css/styles.css')
         .pipe(browserSync.stream());
+});
 
+gulp.task('scriptsRefresh',['webpacker'], function(){
+    browserSync.reload();
+});
+
+
+gulp.task('webpacker', function(callback){
+    return gulp.src('./public/js/main.js')
+        .pipe(webpack( require('./webpack.config.js') ))
+        .pipe(gulp.dest('public/'));
 });

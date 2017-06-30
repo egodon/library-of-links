@@ -1,5 +1,9 @@
+/*Global CSS*/
 @import 'base/_global.css';
 @import 'base/_variables.css';
+
+/*Modules*/
 @import 'modules/_headers.css';
 @import 'modules/_panel.css';
 @import 'modules/_categories.css';
+@import 'modules/_navbar.css';

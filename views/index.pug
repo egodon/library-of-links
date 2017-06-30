@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1.section-title #{title}
+  h1.section-title
+    strong #{title}
   div.categories-container
     ul.categories
       li Categories:
@@ -13,19 +14,7 @@ block content
       li.categories-other Other
   ul.list-group
     each link, i in links
-      - var panelCategory = ''
-        if link.category == 'Video'
-          -panelCategory = 'panel-category-video'
-        else if link.category == 'Tutorial'
-          -panelCategory = 'panel-category-tutorial'
-        else if link.category == 'Article'
-          -panelCategory = 'panel-category-article'
-        else if link.category == 'StackOverflow'
-          -panelCategory = 'panel-category-stackoverflow'
-        else if link.category == 'GitHub'
-          -panelCategory = 'panel-category-github'
-        else if link.category == 'Other'
-          -panelCategory = 'panel-category-other'
+      - var panelCategory = 'panel-category-' + link.category.toLowerCase()
       div.panel.panel-default(class=panelCategory)
         div.panel-heading
           h3.panel-title= link.title
