@@ -5,14 +5,16 @@
     margin-bottom: 2rem;
 
 }
+.categories {
+    padding-left: 0;
+    display: flex;
+}
 
 .categories > li{
     list-style: none;
     color: #111;
-    display: inline;
     margin: 0 1rem;
     padding: 0 0.5rem;
-
 }
 
 .categories > li:first-child{
@@ -21,27 +23,49 @@
 }
 
 
-.categories-video {
-    border-left: 14px solid var(--video-color);
+/* On hover effect*/
+.category:after{
+    display: block;
+    content: '';
+    border-bottom: solid 1px #000;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    transform-origin:  0% 50%;
+}
+.category:hover{
+    cursor: pointer;
+}
+
+.category:hover:after {
+    transform: scaleX(1);
+}
+
+.category:after{
+    transform-origin:  0% 50%;
 }
 
 
+/* Colored Boxes */
+.categories-video {
+    border-left: 20px solid var(--video-color);
+}
+
 .categories-tutorial{
-    border-left: 14px solid var(--tutorial-color);
+    border-left: 20px solid var(--tutorial-color);
 }
 
 .categories-article{
-    border-left: 14px solid var(--article-color);
+    border-left: 20px solid var(--article-color);
 }
 
 .categories-stackoverflow{
-    border-left: 14px solid var(--stackoverflow-color);
+    border-left: 20px solid var(--stackoverflow-color);
 }
 
 .categories-github{
-    border-left: 14px solid var(--github-color);
+    border-left: 20px solid var(--github-color);
 }
 
 .categories-other{
-    border-left: 14px solid var(--other-color);
+    border-left: 20px solid var(--other-color);
 }

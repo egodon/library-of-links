@@ -4,7 +4,10 @@
   "description": "A CRUD app to share Urls",
   "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "npm-run-all -p watch:build watch:server open",
+    "watch:build": "webpack --watch",
+    "watch:server": "nodemon -e js,pug ",
+    "open": "sleepms 2000 && start http://localhost:5000"
   },
   "author": "Evan Godon",
   "license": "ISC",
@@ -24,9 +27,17 @@
   },
   "devDependencies": {
     "browser-sync": "^2.18.12",
+    "concurrently": "^3.5.0",
+    "css-loader": "^0.28.4",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-watch": "^4.3.11",
+    "jquery": "^3.2.1",
+    "mongoose": "^4.10.2",
+    "npm-run-all": "^4.0.2",
+    "reload": "^1.1.7",
+    "sleep-ms": "^2.0.1",
+    "style-loader": "^0.18.2",
     "webpack": "^3.0.0",
     "webpack-stream": "^3.2.0"
   }

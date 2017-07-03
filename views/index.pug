@@ -6,12 +6,12 @@ block content
   div.categories-container
     ul.categories
       li Categories:
-      li.categories-video Video
-      li.categories-tutorial Tutorial
-      li.categories-article Article
-      li.categories-stackoverflow StackOverflow
-      li.categories-github GitHub
-      li.categories-other Other
+      li.category.categories-video Video
+      li.category.categories-tutorial Tutorial
+      li.category.categories-article Article
+      li.category.categories-stackoverflow StackOverflow
+      li.category.categories-github GitHub
+      li.category.categories-other Other
   ul.list-group
     each link, i in links
       - var panelCategory = 'panel-category-' + link.category.toLowerCase()

@@ -7,9 +7,12 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const config = require('./config/database');
+const http = require('http');
+const reload = require('reload');
 
 mongoose.connect(config.database);
 let db  = mongoose.connection;
+
 
 // ES6 Promises because mongoose promises are deprecated
 mongoose.Promise = global.Promise;
@@ -26,6 +29,11 @@ db.on('error', function(err) {
 
 // Init App
 const app = express();
+
+
+// NPM Reload
+var server = http.createServer(app)
+reload(server, app, true);
 
 //Bring in Models
 let Link = require('./models/link');
@@ -112,6 +120,6 @@ app.use('/articles', links);
 app.use('/users', users);
 
 // Start Server
-app.listen(app.get('port'), function() {
+server.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
 });
