@@ -8,6 +8,19 @@ let Link = require('../models/link');
 // User Model
 let User = require('../models/user');
 
+// Home Route
+router.get('/', (req, res) => {
+    Link.find({}).sort({submissionDate: 1}).exec(function(err, links){
+        if (err){
+            console.log(err);
+        } else {
+            res.render('index', {
+                title: 'LINK LIBRARY',
+                links: links
+            });
+        }
+    });
+});
 
 // Add Route
 router.get('/add', ensureAnthenticated, (req, res) => {
@@ -48,7 +61,7 @@ router.post('/add', function(req, res) {
   let errors = req.validationErrors();
 
   if(errors){
-    res.render('add_article', {
+    res.render('add_link', {
     title: 'Add Link',
     errors: errors
     })
@@ -76,13 +89,12 @@ router.post('/add', function(req, res) {
 // Get Single Link
 router.get('/:id', function(req, res) {
   Link.findById(req.params.id, function(err, article) {
-      User.findById(article.submitter, function (err, user) {
+      User.findById(link.submitter, function (err, user) {
           res.render('link', {
             link: article,
             submitter: user.name
           });
-      })
-
+      });
   });
 });
 
@@ -93,8 +105,8 @@ router.delete('/:id', function(req, res) {
   }
   let query = {_id: req.params.id}
 
-  Link.findById(req.params.id, function(err, article){
-    if (article.submitter != req.user._id){
+  Link.findById(req.params.id, function(err, link){
+    if (link.submitter != req.user._id){
       res.status(401).send();
     }else {
       Link.remove(query, function(err) {

@@ -1,4 +1,7 @@
-import deleteLink from './modules/deleteLink';
-import panelFadeIn from './modules/panelFadeIn';
-import styles from '../css/styles.css';
+
+require('bootstrap-loader');
+
+import './modules/deleteLink';
+import './modules/panelFadeIn';
+import '../css/styles.css';
 

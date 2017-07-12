@@ -53,7 +53,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Set Public Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Express Session Middleware
 app.use(session({
@@ -101,13 +101,13 @@ app.get('*', function(req, res, next) {
 
 // Home Route
 app.get('/', (req, res) => {
-  Link.find({}, function(err, links){
+  Link.find({}).sort({submissionDate: 1}).exec(function(err, links){
     if (err){
       console.log(err);
     } else {
       res.render('index', {
         title: 'LINK LIBRARY',
-        links: links.reverse()
+        links: links
       });
     }
   });

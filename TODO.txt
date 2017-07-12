@@ -1,9 +1,10 @@
 
 1. Lazy load more links on scroll
 https://stackoverflow.com/questions/24689344/lazy-loading-more-data-scroll-in-mongoose-nodejs
+    -Write a function in app.js and export it to routes/links.js
+
 
 2. Filter by category
 
--Add delete link message notification
+3.Add delete link message notification
 
-3.Bundle bootstrap and jquery into bundle.js

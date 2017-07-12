@@ -66,6 +66,10 @@
     border-left: 20px solid var(--github-color);
 }
 
+.categories-reddit{
+    border-left: 20px solid var(--reddit-color);
+}
+
 .categories-other{
     border-left: 20px solid var(--other-color);
 }
