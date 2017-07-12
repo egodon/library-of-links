@@ -8,20 +8,6 @@ let Link = require('../models/link');
 // User Model
 let User = require('../models/user');
 
-// Home Route
-router.get('/', (req, res) => {
-    Link.find({}).sort({submissionDate: 1}).exec(function(err, links){
-        if (err){
-            console.log(err);
-        } else {
-            res.render('index', {
-                title: 'LINK LIBRARY',
-                links: links
-            });
-        }
-    });
-});
-
 // Add Route
 router.get('/add', ensureAnthenticated, (req, res) => {
   res.render('add_link', {
