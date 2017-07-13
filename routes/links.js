@@ -20,7 +20,7 @@ router.get('/add', ensureAnthenticated, (req, res) => {
 router.post('/edit/:id', ensureAnthenticated, function(req, res) {
     let link = {};
     link.title = req.body.title;
-    link.submitter = req.body.submitter;
+    link.url = req.body.url;
     link.body = req.body.body;
 
     let query = {_id:req.params.id}
@@ -107,14 +107,14 @@ router.delete('/:id', function(req, res) {
 
 // Load Edit Form
 router.get('/edit/:id', function(req, res) {
-  Link.findById(req.params.id, function(err, links) {
-      if(links.submitter != req.user._id){
+  Link.findById(req.params.id, function(err, link) {
+      if(link.submitter != req.user.name){
         req.flash('danger', 'Not Authorized');
         res.redirect('/');
       }
       res.render('edit_link', {
         title: 'Edit Link',
-        link:links
+        link:link
       });
   });
 });

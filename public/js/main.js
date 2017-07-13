@@ -1,7 +1,14 @@
+// Load in boostrap
+import 'bootstrap-loader';
 
-require('bootstrap-loader');
+// Load in CSS
+import '../css/styles.css';
 
+// JS modules
 import './modules/deleteLink';
 import './modules/panelFadeIn';
-import '../css/styles.css';
+import './modules/flashMsgFadeOut'
+
+
+
 

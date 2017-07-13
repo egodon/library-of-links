@@ -1,7 +1,6 @@
 
 
-1.Ability to edit links
-
+1.Fade Out flash messages
 
 2.Add delete link message notification
 

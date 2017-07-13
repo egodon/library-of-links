@@ -2,17 +2,24 @@ extends layout
 
 block content
   h1 #{title}
-  form(method='POST', action='/articles/edit/'+link._id)
+  form(method='POST', action='/links/edit/'+link._id)
     #form-group
       label Title:
       input.form-control(name='title',type='text', value=link.title)
 
     #form-group
-      label Author:
-      input.form-control(name='author',type='text', value=link.submitter)
+      label URL:
+      input.form-control(name='url',type='text', value=link.url)
         
     #form-group
-      label Title:
-      textarea.form-control(name='body')= link.body
+      label Category:
+      select.form-control(name='category')
+        option(selected= link.category == 'Video' ) Video
+        option(selected= link.category == 'Tutorial') Tutorial
+        option(selected= link.category == 'Article') Article
+        option(selected= link.category ==  'StackOverflow') StackOverflow
+        option(selected= link.category == 'GitHub') GitHub
+        option(selected= link.category == 'Reddit') Reddit
+        option(selected= link.category == 'Other') Other
     br
     input.btn.btn-primary(type='submit', value='Submit')

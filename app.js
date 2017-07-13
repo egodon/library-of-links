@@ -116,7 +116,7 @@ app.get('/', (req, res) => {
 //Route Files
 let links = require('./routes/links');
 let users = require('./routes/users');
-app.use('/articles', links);
+app.use('/links', links);
 app.use('/users', users);
 
 // Start Server
