@@ -11,6 +11,9 @@
   },
   "author": "Evan Godon",
   "license": "ISC",
+  "engines": {
+    "node": "6.9.1"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
