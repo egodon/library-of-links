@@ -101,7 +101,7 @@ app.get('*', function(req, res, next) {
 
 // Home Route
 app.get('/', (req, res) => {
-  Link.find({}).sort({submissionDate: 1}).exec(function(err, links){
+  Link.find({}).sort({_id: -1}).exec(function(err, links){
     if (err){
       console.log(err);
     } else {

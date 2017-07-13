@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "npm-run-all -p watch:build watch:server open",
-    "watch:build": "webpack -p --progress --watch",
+    "watch:build": "webpack -p --progress --colors --watch",
     "watch:server": "nodemon -e js,pug ",
     "open": "sleepms 2000 && start http://localhost:5000"
   },
