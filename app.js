@@ -33,7 +33,7 @@ const app = express();
 
 // NPM Reload
 var server = http.createServer(app)
-reload(server, app, true);
+reload(app, {verbose: true});
 
 //Bring in Models
 let Link = require('./models/link');
