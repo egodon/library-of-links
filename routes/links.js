@@ -72,16 +72,20 @@ router.post('/add', function(req, res) {
 
 });
 
-// Get Single Link
-router.get('/:id', function(req, res) {
-  Link.findById(req.params.id, function(err, article) {
-      User.findById(link.submitter, function (err, user) {
-          res.render('link', {
-            link: article,
-            submitter: user.name
-          });
-      });
-  });
+// Get links by category
+router.get('/:category', (req, res) => {
+    let category = req.params.category;
+
+    Link.find({'category': category}).sort({_id: -1}).exec((err, links) => {
+        if (err){
+            console.log(err)
+        } else {
+            res.render('index', {
+                title: 'LINK LIBRARY',
+                links: links
+            });
+        }
+    });
 });
 
 // Delete Link

@@ -1,7 +1,8 @@
 
 
-1. Create Procfile
-https://devcenter.heroku.com/articles/procfile
+1. If statement for npm reaload
+   refactor js modules
+   Stick 'edit' and 'delete' together
 
 2.Add delete link message notification
 
@@ -9,4 +10,3 @@ https://devcenter.heroku.com/articles/procfile
 https://stackoverflow.com/questions/24689344/lazy-loading-more-data-scroll-in-mongoose-nodejs
     -Write a function in app.js and export it to routes/links.js
 
-4. Filter by category

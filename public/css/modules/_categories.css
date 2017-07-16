@@ -13,8 +13,8 @@
 .categories > li{
     list-style: none;
     color: #111;
-    margin: 0 1rem;
-    padding: 0 0.5rem;
+    padding: 0 2rem 0 0.5rem;
+
 }
 
 .categories > li:first-child{
@@ -23,53 +23,45 @@
 }
 
 
-/* On hover effect*/
-.category:after{
-    display: block;
-    content: '';
-    border-bottom: solid 1px #000;
-    transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
-    transform-origin:  0% 50%;
-}
+
 .category:hover{
     cursor: pointer;
 }
 
-.category:hover:after {
-    transform: scaleX(1);
-}
-
-.category:after{
-    transform-origin:  0% 50%;
+.category{
+    transition: border-left .2s;
 }
 
 
 /* Colored Boxes */
-.categories-video {
+.category-video {
     border-left: 20px solid var(--video-color);
 }
 
-.categories-tutorial{
+.category-tutorial{
     border-left: 20px solid var(--tutorial-color);
 }
 
-.categories-article{
+.category-article{
     border-left: 20px solid var(--article-color);
 }
 
-.categories-stackoverflow{
+.category-stackoverflow{
     border-left: 20px solid var(--stackoverflow-color);
 }
 
-.categories-github{
+.category-github{
     border-left: 20px solid var(--github-color);
 }
 
-.categories-reddit{
+.category-reddit{
     border-left: 20px solid var(--reddit-color);
 }
 
-.categories-other{
+.category-other{
     border-left: 20px solid var(--other-color);
+}
+
+.greyed-out{
+    border-left: 20px solid var(--greyed-out);
 }
