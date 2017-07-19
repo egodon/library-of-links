@@ -10,9 +10,9 @@ const config = require('./config/database');
 const http = require('http');
 const reload = require('reload');
 
+// Connect to mlab database
 mongoose.connect(config.database);
 let db  = mongoose.connection;
-
 
 // ES6 Promises because mongoose promises are deprecated
 mongoose.Promise = global.Promise;
@@ -30,17 +30,17 @@ db.on('error', function(err) {
 // Init App
 const app = express();
 
-
-// NPM Reload
-var server = http.createServer(app)
-reload(app, {verbose: false});
-
 //Bring in Models
 let Link = require('./models/link');
 
 // Set Port
 app.set('port', (process.env.PORT || 5000));
 
+// NPM Reload for development only
+var server = http.createServer(app);
+if (app.get('port') === 5000){
+  reload(app, {verbose: false});
+}
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -52,7 +52,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-// Set Public Folder
+// Set dist Folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Express Session Middleware

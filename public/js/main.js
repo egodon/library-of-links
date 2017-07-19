@@ -7,8 +7,7 @@ import '../css/styles.css';
 // JS modules
 import './modules/deleteLink';
 import './modules/filterCategories';
-import './modules/panelFadeIn';
-import './modules/flashMsgFadeOut'
+import './modules/fadeAnimations';
 
 
 

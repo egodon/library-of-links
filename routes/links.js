@@ -21,7 +21,7 @@ router.post('/edit/:id', ensureAnthenticated, function(req, res) {
     let link = {};
     link.title = req.body.title;
     link.url = req.body.url;
-    link.body = req.body.body;
+    link.category = req.body.category;
 
     let query = {_id:req.params.id}
 

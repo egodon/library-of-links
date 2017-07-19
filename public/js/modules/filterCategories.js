@@ -2,32 +2,50 @@ let filterCategories = $(document).ready( () => {
 
     let $categories = $('.categories');
     let $category = $('.category');
-    let $word = $($categories.children()[0]);
+    let $categoryWord = $($categories.children()[0]);
 
-    // On hover, the categories list items will grey out except
+    // On hover, the category list items will grey out except
     // the one that is being targeted
     $category.hover( (e) =>{
-        $word.text('Filter By:').append("&nbsp;&nbsp;&nbsp;&nbsp;");
+        $categoryWord.text('Filter By:').append("&nbsp;&nbsp;&nbsp;&nbsp;");
+        $category.removeClass('greyed-out');
         $category.each((index, value) => {
-            if (e.target !== value) {
-                let $cat = $(value);
-                $cat.toggleClass('greyed-out');
+            let $cat = $(value);
+            if (e.target !== value && !($cat.hasClass('category-selected'))) {
+                $cat.addClass('greyed-out');
             }
         });
     }, () => {
-            $word.text('Categories:');
-            $category.each((index, value) => {
-                let $cat = $(value);
-                $cat.removeClass('greyed-out');
-            });
+            $categoryWord.text('Categories:');
+            // State where no category is selected
+            if(!$categoryWord.hasClass('category-selected')){
+                $category.each((index, value) => {
+                    let $cat = $(value);
+                    $cat.removeClass('greyed-out');
+                });
+            } else { // State where a category is selected
+                $category.each((index, value) => {
+                    let $cat = $(value);
+                    if (!$cat.hasClass('category-selected')){
+                        $cat.addClass('greyed-out');
+                    }
+                });
+            }
     });
 
-    // When a category is clicked the list group of the links will
-    // be re-rendered filtered by the selected category
-    $categories.on('click', (e) => {
-        let $target = e.target;
-        const category =  $target.innerHTML;
 
+    $categories.on('click', (e) => {
+        let $target = $(e.target);
+        $categoryWord.addClass('category-selected');
+        $category.each((index, value) => {
+            let $cat = $(value);
+            if (e.target !== value && $cat.hasClass('category-selected')) {
+                $cat.removeClass('category-selected');
+            }
+        });
+        $target.addClass('category-selected');
+
+        const category = $target.text();
         $.ajax({
             type: 'GET',
             url: `https://api.mlab.com/api/1/databases/linklib/collections/links/?q={'category': '${category}' }&s={"_id": -1}&apiKey=L9_WEqfVS1SaIdZ5mfToatlnrUtbM2pV`,
@@ -39,6 +57,8 @@ let filterCategories = $(document).ready( () => {
             }
         });
 
+        // When a category is clicked the list group of the links will
+        // be re-rendered filtered by the selected category
         let handleData = (data) =>{
             let $listGroup = $('.list-group');
             $listGroup.empty();
@@ -51,7 +71,7 @@ let filterCategories = $(document).ready( () => {
                         )
                     ),
                     $("<div>", {class: 'panel-body'}).append(
-                        $("<a>", {class: 'panel-link-url'}).text(cat.url)
+                        $("<a>", {class: 'panel-link-url', href: cat.url, target: '_blank'}).text(cat.url)
                     )
                 ).appendTo($listGroup);
             });

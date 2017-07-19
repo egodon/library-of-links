@@ -29,8 +29,24 @@
 }
 
 .category{
-    transition: border-left .2s;
+    transition: border-left .15s;
+    user-select: none;
 }
+
+/*When category is selected*/
+.category-selected:not(:first-child):after{
+    display: block;
+    content: '';
+    border-bottom: solid 1px #000;
+    transform-origin:  50% 50%;
+    animation: border 200ms ease-in-out;
+}
+
+@keyframes border {
+    from{transform: scaleX(0);}
+    to{transform: scaleX(1)}
+}
+
 
 
 /* Colored Boxes */

@@ -1,12 +1,20 @@
 
+When updating, category does not change
 
-1. If statement for npm reaload
-   refactor js modules
-   Stick 'edit' and 'delete' together
 
-2.Add delete link message notification
+1. Add modal to confirm link deletion
+https://stackoverflow.com/questions/8982295/confirm-delete-modal-dialog-with-twitter-bootstrap
+
+
+
+2. Figure out how to pass variable 'user' from node to client side JS
+https://stackoverflow.com/questions/28096735/how-do-i-access-passports-req-user-variable-in-client-side-javascript
+
 
 3. Lazy load more links on scroll
 https://stackoverflow.com/questions/24689344/lazy-loading-more-data-scroll-in-mongoose-nodejs
-    -Write a function in app.js and export it to routes/links.js
 
+4.AJAX all the things
+    -Add link + new button
+    -Edit link + modal on page
+    -Delete link + modal on page

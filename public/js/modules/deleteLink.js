@@ -9,7 +9,7 @@ let deleteLink = $(document).ready(function() {
         timeout: 300000,
         async: true,
         success: function() {
-            window.location.href='/';
+            $target.parents().eq(3).fadeOut(500);
         },
         error: function (err) {
           console.log(err);

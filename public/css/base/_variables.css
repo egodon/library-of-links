@@ -1,4 +1,9 @@
 
+/*Background colour*/
+:root{
+    --background-color: #f5f5f5 ;
+}
+
 /*Category colours*/
 :root {
     --video-color: #F44336;
@@ -10,3 +15,4 @@
     --other-color: #9C27B0;
     --greyed-out: #AAAFB4;
 }
+

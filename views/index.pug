@@ -22,8 +22,9 @@ block content
           div.panel-under-title
             p Submitted by #{link.submitter} on #{link.submissionDate}
             if user && user.name == link.submitter
-              div
+              div.panel-edit-delete
                 a.edit-article(href='/links/edit/'+link._id) Edit
+                p /
                 a.delete-article(href="#" data-id=link._id) Delete
         div.panel-body
           a.panel-link-url(href=link.url target='_blank')= link.url
