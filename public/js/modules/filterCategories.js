@@ -34,13 +34,14 @@ let filterCategories = $(document).ready( () => {
     });
 
 
-    $categories.on('click', (e) => {
+    $categories.click( (e) => {
         let $target = $(e.target);
         $categoryWord.addClass('category-selected');
         $category.each((index, value) => {
             let $cat = $(value);
             if (e.target !== value && $cat.hasClass('category-selected')) {
                 $cat.removeClass('category-selected');
+                $cat.addClass('greyed-out')
             }
         });
         $target.addClass('category-selected');
