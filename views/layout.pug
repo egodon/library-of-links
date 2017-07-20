@@ -23,11 +23,14 @@ html
             else
               li.navbar-text Login to add a link
 
+          form.navbar-form.navbar-left.s
+            div.form-group
+              input(type="text" class="form-control search-bar" placeholder="Search")
+
           ul.nav.navbar-nav.navbar-right
             if user
               li.navbar-text Logged in as
                 span.color-text  #{user.name}
-
               li
                 a(href='/users/logout') Logout
             else
