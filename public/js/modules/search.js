@@ -1,7 +1,11 @@
 let search =  $(document).ready(() =>{
 
     let $searchBar = $('.search-bar');
-    let $panelTitles = $('.panel-title');
+    let $panelTitles;
+
+    $searchBar.focus(() =>{
+        $panelTitles = $('.panel-title');
+    })
 
     $searchBar.keyup(() =>{
         for (let i = 0; i < $panelTitles.length; i++){

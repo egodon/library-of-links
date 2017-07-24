@@ -27,7 +27,8 @@ div .panel-title {
 
 .panel-link-url {
     font-size: 2rem;
-
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 
