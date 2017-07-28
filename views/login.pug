@@ -8,7 +8,15 @@ block content
       input.form-control(name='username')
     
     #form-group
-      label password:
+      label Password:
       input.form-control(name='password',type='password')
-    br
+
+
+    #form-group
+      div.checkbox
+        <label>
+          <input type="checkbox" name="remember_me_checkbox" value="yes" checked> Remember me
+        </label>
+
+
     input.btn.btn-primary(type='submit', value='Submit')

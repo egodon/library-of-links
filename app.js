@@ -5,17 +5,18 @@ const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
+const cookieParser = require('cookie-parser')
 const passport = require('passport');
+const rememberMe = require('passport-remember-me');
 const config = require('./config/database');
 const http = require('http');
 const reload = require('reload');
 
 // Connect to mlab database
 mongoose.connect(config.database);
+mongoose.Promise = global.Promise;
 let db  = mongoose.connection;
 
-// ES6 Promises because mongoose promises are deprecated
-mongoose.Promise = global.Promise;
 
 //Check connection
 db.once('open', function() {
@@ -41,6 +42,7 @@ var server = http.createServer(app);
 if (app.get('port') === 5000){
   reload(app, {verbose: false});
 }
+
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -91,8 +93,12 @@ app.use(expressValidator({
 // Passport config
 require('./config/passport')(passport);
 // Passport Middleware
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.authenticate('remember-me'));
+// TEMPORARY TOKEN OBJECT
+module.exports.tokens = {};
 
 app.get('*', function(req, res, next) {
   res.locals.user = req.user || null;

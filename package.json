@@ -5,9 +5,10 @@
   "main": "app.js",
   "scripts": {
     "start": "npm-run-all -p watch:build watch:server open",
-    "watch:build": "webpack -p --progress --colors --watch",
+    "watch:build": "webpack --progress --colors --watch",
     "watch:server": "nodemon -e js,pug ",
-    "open": "sleepms 2000 && start http://localhost:5000"
+    "open": "sleepms 2000 && start http://localhost:5000",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "author": "Evan Godon",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.3",
@@ -26,6 +28,7 @@
     "mongoose": "^4.10.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "passport-remember-me": "0.0.1",
     "pug": "^2.0.0-rc.1"
   },
   "devDependencies": {

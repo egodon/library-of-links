@@ -3,6 +3,8 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
+const remember_me = require('../config/tokens');
+
 // Bring in User Models
 let User = require('../models/user');
 
@@ -65,17 +67,30 @@ router.get('/login', function(req, res) {
   res.render('login');
 });
 
+
+
 // Login Process
-router.post('/login', function(req, res, next) {
-  passport.authenticate('local', {
-    successRedirect:'/',
-    failureRedirect:'/users/login',
-    failureFlash: true
-  })(req, res, next);
+router.post('/login',
+    passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }),
+    function(req, res, next) {
+        // Issue a remember me cookie if the option was checked
+        if (!req.body.remember_me_checkbox) { return next(); }
+
+        remember_me.issueToken(req.user, function(err, token) {
+            if (err) { return next(err); }
+            res.cookie('remember_me', token, { path: '/', httpOnly: true, maxAge: 604800000 });
+            return next();
+        });
+    },
+    function(req, res) {
+        res.redirect('/');
 });
+
+
 
 // Logout
 router.get('/logout', function(req, res) {
+  res.clearCookie('remember_me');
   req.logout();
   req.flash('success', 'You are logged out');
   res.redirect('/users/login')
