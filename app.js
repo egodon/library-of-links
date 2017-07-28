@@ -39,9 +39,8 @@ app.set('port', (process.env.PORT || 5000));
 
 // NPM Reload for development only
 var server = http.createServer(app);
-if (app.get('port') === 5000){
-  reload(app, {verbose: false});
-}
+reload(app, {verbose: false});
+
 
 // Load View Engine
 app.set('views', path.join(__dirname, 'views'));
