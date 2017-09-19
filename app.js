@@ -96,8 +96,6 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.authenticate('remember-me'));
-// TEMPORARY TOKEN OBJECT
-module.exports.tokens = {};
 
 app.get('*', function(req, res, next) {
   res.locals.user = req.user || null;

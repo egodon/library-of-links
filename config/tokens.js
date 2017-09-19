@@ -1,6 +1,5 @@
 const utils = require('./utils');
 let User = require('../models/user');
-let tokens = require('../app.js')
 
 
 
@@ -24,12 +23,12 @@ let tokensConfig = {
 
     consumeRememberMeToken: function(token, fn){
         let uid;
-        console.log('The token to find is ', token);
         // invalidate the single-use token
-        User.find({accessToken: token}, (err, user) => {
+        // FIXME
+        User.findOneAndUpdate({accessToken: token},{ $set: {accessToken: undefined}},{new: true}, (err, user) => {
             console.log('Found user', user)
             uid = user._id;
-        })
+        });
         return fn(null, uid);
     }
 
