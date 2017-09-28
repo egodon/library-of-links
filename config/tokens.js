@@ -26,7 +26,6 @@ let tokensConfig = {
         // invalidate the single-use token
         // FIXME
         User.findOneAndUpdate({accessToken: token},{ $set: {accessToken: undefined}},{new: true}, (err, user) => {
-            console.log('Found user', user)
             uid = user._id;
         });
         return fn(null, uid);

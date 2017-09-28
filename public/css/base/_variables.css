@@ -1,11 +1,9 @@
 
-/*Background colour*/
 :root{
+    /*Background colour*/
     --background-color: #f5f5f5 ;
-}
 
-/*Category colours*/
-:root {
+    /*Category colours*/
     --video-color: #F44336;
     --tutorial-color: #03A9F4;
     --article-color: #4CAF50;

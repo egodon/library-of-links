@@ -1,8 +1,8 @@
 extends layout
 
 block content
-  h1.section-title
-    strong #{title}
+  div.form-group.search-container
+      input(type="text" class="form-control search-bar" placeholder="search...")
   div.categories-container
     ul.categories
       li Categories:
@@ -12,7 +12,8 @@ block content
       li.category.category-stackoverflow StackOverflow
       li.category.category-github GitHub
       li.category.category-reddit Reddit
-      li.category.category-other Other
+      li.category.category-other Other 
+
   ul.list-group
     each link, i in links
       - var panelCategory = 'panel-category-' + link.category.toLowerCase()

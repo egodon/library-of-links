@@ -19,7 +19,6 @@
 
 .categories > li:first-child{
     border: none;
-    margin: 0;
     white-space: nowrap;
     overflow: hidden;
 }

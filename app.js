@@ -109,14 +109,13 @@ app.get('/', (req, res) => {
       console.log(err);
     } else {
       res.render('index', {
-        title: 'LINK LIBRARY',
         links: links
       });
     }
   });
 });
 
-//Route Files
+// Route Files
 let links = require('./routes/links');
 let users = require('./routes/users');
 app.use('/links', links);

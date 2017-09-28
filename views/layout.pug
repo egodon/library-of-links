@@ -14,30 +14,22 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/') CODESQUAD
+          a.header.navbar-brand(href='/') link_lib
         #navbar.collapse.navbar-collapse
-          ul.nav.navbar-nav
-            if user
-              li
-                .add-link-button(href='/links/add') Add Link
-            else
-              li.navbar-text Login to add a link
-
-          form.navbar-form.navbar-left.s
-            div.form-group
-              input(type="text" class="form-control search-bar" placeholder="Search")
-
           ul.nav.navbar-nav.navbar-right
             if user
-              li.navbar-text Logged in as
-                span.color-text  #{user.name}
               li
-                a(href='/users/logout') Logout
+                a.btn.add-link-btn(href='/links/add') add_link
+
+              li.navbar-text logged_in_as
+                span.color-text  #{user.name.replace(/\s/, '_').toLowerCase()}
+              li
+                a(href='/users/logout') logout
             else
               li
-                a(href='/users/register') Register
+                a(href='/users/register') register
               li
-                a(href='/users/login') Login
+                a(href='/users/login') login
 
     .container
       != messages('message', locals)
@@ -49,5 +41,5 @@ html
       hr
       footer
         p Copyright &copy; 2017
-
-    script(src="/reload/reload.js")
+ 
+script(src="/reload/reload.js")

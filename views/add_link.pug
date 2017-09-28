@@ -4,13 +4,12 @@ block content
   h1 #{title}
   form(method='POST', action='/links/add')
     #form-group
+      label URL:
+      input.form-control(name='url', type='text' autofocus)
+
+    #form-group
       label Title:
       input.form-control(name='title',type='text')
-
-        
-    #form-group
-      label URL:
-      input.form-control(name='url', type='text')
 
     #form-group
       label Category:
