@@ -4,3 +4,4 @@ config/database.js
 .idea/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
+dist/bundle.js

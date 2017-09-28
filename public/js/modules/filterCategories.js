@@ -5,7 +5,6 @@ let filterCategories = $(document).ready( () => {
     let $categoryWord = $($categories.children()[0]);
 
     $category.hover( (e) =>{
-        $categoryWord.text('Filter By:').append("&nbsp;&nbsp;&nbsp;&nbsp;");
         $category.removeClass('greyed-out');
         $category.each((index, value) => {
             let $cat = $(value);
@@ -44,7 +43,7 @@ let filterCategories = $(document).ready( () => {
         });
         $target.addClass('category-selected');
 
-        const category = $target.text();
+        const category = $target.text().trim();
         $.ajax({
             type: 'GET',
             url: `https://api.mlab.com/api/1/databases/linklib/collections/links/?q={'category': '${category}' }&s={"_id": -1}&apiKey=L9_WEqfVS1SaIdZ5mfToatlnrUtbM2pV`,
