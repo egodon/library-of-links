@@ -14,22 +14,22 @@ html
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.header.navbar-brand(href='/') link_lib
+          a.header.navbar-brand(href='/') Link Library
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
             if user
               li
-                a.btn.add-link-btn(href='/links/add') add_link
+                a.btn.add-link-btn(href='/links/add') Add Link
 
-              li.navbar-text logged_in_as
-                span.color-text  #{user.name.replace(/\s/, '_').toLowerCase()}
+              li.navbar-text Logged in as
+                span.color-text  #{user.name}
               li
                 a(href='/users/logout') logout
             else
               li
-                a(href='/users/register') register
+                a(href='/users/register') Register
               li
-                a(href='/users/login') login
+                a(href='/users/login') Login
 
     .container
       != messages('message', locals)
