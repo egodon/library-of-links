@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.search-bar{
+input.search-bar{
     width: 65%;
     font-size: 3rem;
     padding: 30px;

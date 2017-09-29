@@ -1,7 +1,7 @@
 node_modules/
 config/database.js
+dist/
 # User-specific stuff:
 .idea/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
-dist/bundle.js

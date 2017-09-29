@@ -1,5 +1,5 @@
-// Load in Bootstrap
-import 'bootstrap-loader';
+// // Load in Bootstrap
+import 'bootstrap-loader/extractStyles';
 
 // Load in CSS
 import '../css/styles.css';

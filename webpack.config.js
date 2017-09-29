@@ -1,5 +1,6 @@
 const webpack = require('webpack');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 
 module.exports = {
@@ -18,22 +19,27 @@ module.exports = {
         },
         {
             reload: false
-        })
+        }),
+        new ExtractTextPlugin("styles.css"),
     ],
     output: {
         path: __dirname + "/dist",
         filename: 'bundle.js'
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.css$/,
-                loader: "style-loader!css-loader"
+              test: /\.css$/,
+              use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: "css-loader"
+              })
             },
             {
                 test: /\.png$/,
                 loader: "url-loader"
             },
+            // Bootstrap
             {
                 test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
                 loader: 'url-loader'
@@ -44,7 +50,10 @@ module.exports = {
             },
             {
                 test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file-loader'
+                loader: 'file-loader',
+                options: {
+                    emitFile: false
+                  }  
             },
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
