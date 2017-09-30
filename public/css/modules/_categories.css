@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+    
 
 }
 .categories {
@@ -13,7 +14,7 @@
 .categories > li{
     list-style: none;
     color: #111;
-    padding: 0 2rem 0 0.5rem;
+    padding: 0 1.4rem 0 0.5rem;
 
 }
 
@@ -21,6 +22,7 @@
     border: none;
     white-space: nowrap;
     overflow: hidden;
+    padding-right: 5px;
 }
 
 
@@ -41,6 +43,8 @@
     border-bottom: solid 1px #000;
     transform-origin:  50% 50%;
     animation: border 200ms ease-in-out;
+    float: right;
+    width: calc(100% - 2.2em);
 }
 
 @keyframes border {
@@ -51,34 +55,55 @@
 
 
 /* Colored Boxes */
-.category-video {
-    border-left: 20px solid var(--video-color);
+
+.categories > li:not(:first-child)::before {
+    width: 1.4em;
+    height:1.4em;
+    display:inline-block;
+    vertical-align: middle;
+    content: "";
+    margin-right: 10px;
+    }
+
+.category-video::before{
+    background: var(--video-color);
 }
 
-.category-tutorial{
-    border-left: 20px solid var(--tutorial-color);
+.category-tutorial::before{
+    background: var(--tutorial-color);
 }
 
-.category-article{
-    border-left: 20px solid var(--article-color);
+.category-article::before{
+    background: var(--article-color);
 }
 
-.category-stackoverflow{
-    border-left: 20px solid var(--stackoverflow-color);
+.category-stackoverflow::before{
+    background: var(--stackoverflow-color);
 }
 
-.category-github{
-    border-left: 20px solid var(--github-color);
+.category-github::before{
+    background: var(--github-color);
 }
 
-.category-reddit{
-    border-left: 20px solid var(--reddit-color);
+.category-reddit::before{
+    background: var(--reddit-color);
 }
 
-.category-other{
-    border-left: 20px solid var(--other-color);
+.category-other::before{
+    background: var(--other-color);
 }
 
-.greyed-out{
-    border-left: 20px solid var(--greyed-out);
+.greyed-out::before{
+    background: var(--greyed-out);
+}
+
+@media (max-width: 1000px){
+    .categories > li{
+        font-size: 2.5rem;
+    }
+
+    .categories > li:not(:first-child)::before {
+        width: 100%;
+        height:1.4em;
+    }
 }

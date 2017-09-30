@@ -1,6 +1,4 @@
 
-FINSH PASSPORT JS
-EXPORT PASSPORT CONFIG FUNCTIONS TO USERS.JS
 
 1. Add modal to confirm link deletion
 https://stackoverflow.com/questions/8982295/confirm-delete-modal-dialog-with-twitter-bootstrap

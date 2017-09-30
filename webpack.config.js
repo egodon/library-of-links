@@ -16,9 +16,6 @@ module.exports = {
             host: 'localhost',
             proxy:'http://localhost:5000/',
             
-        },
-        {
-            reload: false
         }),
         new ExtractTextPlugin("styles.css"),
     ],
