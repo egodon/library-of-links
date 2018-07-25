@@ -12,7 +12,7 @@
   "author": "Evan Godon",
   "license": "ISC",
   "engines": {
-    "node": "6.9.1"
+    "node": "10.5.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -45,7 +45,6 @@
     "gulp-nodemon": "^2.2.1",
     "gulp-watch": "^4.3.11",
     "jquery": "^3.2.1",
-    "mongoose": "^4.10.2",
     "node-sass": "^4.5.3",
     "npm-run-all": "^4.0.2",
     "reload": "^2.0.0",

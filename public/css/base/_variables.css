@@ -1,16 +1,14 @@
+:root {
+  /*Background colour*/
+  --background-color: #f5f5f5;
 
-:root{
-    /*Background colour*/
-    --background-color: #f5f5f5 ;
-
-    /*Category colours*/
-    --video-color: #F44336;
-    --tutorial-color: #03A9F4;
-    --article-color: #4CAF50;
-    --stackoverflow-color: #FFC107;
-    --github-color: #E91E63;
-    --reddit-color:#ff4500;
-    --other-color: #9C27B0;
-    --greyed-out: #AAAFB4;
+  /*Category colours*/
+  --video-color: #f44336;
+  --tutorial-color: #03a9f4;
+  --article-color: #4caf50;
+  --stackoverflow-color: #ffc107;
+  --github-color: #e91e63;
+  --reddit-color: #ff4500;
+  --other-color: #9c27b0;
+  --greyed-out: #aaafb4;
 }
-

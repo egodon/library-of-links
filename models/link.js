@@ -1,4 +1,4 @@
-let mongoose = require('mongoose');
+let mongoose = require("mongoose");
 
 // Link Schema
 let linksSchema = mongoose.Schema({
@@ -10,9 +10,9 @@ let linksSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  submissionDate:{
+  submissionDate: {
     type: String,
-      required: true
+    required: true
   },
   url: {
     type: String,
@@ -23,4 +23,4 @@ let linksSchema = mongoose.Schema({
   }
 });
 
-let Link = module.exports = mongoose.model('Link', linksSchema)
+let Link = (module.exports = mongoose.model("Link", linksSchema));
